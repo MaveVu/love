@@ -10,7 +10,11 @@ def percent(name, name_1):
         if i.isalpha():
             d[i.lower()] += 1
 
+    lst_of_lsts = []
+
     lst = list(d.values())
+    lst_of_lsts.append(lst.copy())
+    
     l = []
     
     n = len(lst)
@@ -20,11 +24,7 @@ def percent(name, name_1):
         k = math.ceil(k / 2)
         l.append(k)
 
-    # print(list(d.items()))
-    # print(list(d.values()))
-    print(d)
-
-    for loops in range(len(l)):
+    for _ in range(len(l)):
         for i in range(0, math.ceil(n / 2)):
             if i != n - i - 1:
                 j = lst[i] + lst[n - i - 1]
@@ -33,13 +33,10 @@ def percent(name, name_1):
                 lst.append(lst[i])
         for i in range(0, len(lst) - math.ceil(n / 2)):
             lst.pop(0)
-        print(lst)
+        lst_of_lsts.append(lst.copy())
         n = len(lst)
 
-    return lst[0] * 10 + lst[1]
+    return d, lst_of_lsts, lst[0] * 10 + lst[1]
 
-
-name = input("Enter your name: ")
-name_1 = input("Enter your bf/gf's name: ")
-print(f"{name} + {name_1}: {percent(name, name_1)}%")
-print(f"{name_1} + {name}: {percent(name_1, name)}%")
+d, lst, per = percent('minh', 'linh')
+print(lst)
