@@ -38,5 +38,3 @@ def percent(name, name_1):
 
     return d, lst_of_lsts, lst[0] * 10 + lst[1]
 
-d, lst, per = percent('minh', 'linh')
-print(lst)
